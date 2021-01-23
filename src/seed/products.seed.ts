@@ -1,42 +1,42 @@
-import { createConnection } from 'typeorm';
-import { connectionOptions } from '../db';
+import { Connection } from 'typeorm';
+
 import { Product } from '../products/Product.entity';
 import { ProductStatus } from '../products/ProductStatus';
+import { categories } from './categories.seed';
 
 const products: Product[] = [
   new Product({
     id: 1,
-    category: 'groceries',
+    category: categories[0],
     status: ProductStatus.DRAFT,
     name: 'pyra z gzikiem',
   }),
   new Product({
     id: 2,
-    category: 'electronics',
+    category: categories[1],
     status: ProductStatus.PUBLISHED,
     name: 'ChinaPhone',
   }),
   new Product({
     id: 3,
-    category: 'electronics',
+    category: categories[1],
     status: ProductStatus.DRAFT,
     name: 'ChinaBook',
   }),
   new Product({
     id: 4,
-    category: 'toys',
+    category: categories[2],
     status: ProductStatus.ARCHIVED,
     name: 'Teddy Bear™',
   }),
   new Product({
     id: 5,
-    category: 'toys',
+    category: categories[2],
     status: ProductStatus.PUBLISHED,
     name: 'RoboBear',
   }),
 ];
 
-export const seedProducts = async () => {
-  const connection = await createConnection(connectionOptions as any);
+export const seedProducts = async (connection: Connection) => {
   await connection.manager.insert(Product, products);
 };

@@ -5,6 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "start": "ts-node src/server.ts",
+    "dev": "nodemon src/server.ts",
     "seed": "ts-node src/seed/index.ts"
   },
   "author": "Joanna Liana",
@@ -17,6 +18,8 @@
     "@typescript-eslint/parser": "^4.4.0",
     "eslint": "^7.11.0",
     "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "testcontainers": "^6.4.2",
     "ts-jest": "^26.4.3",
     "ts-node": "^3.3.0",
     "typescript": "^3.3.3333"

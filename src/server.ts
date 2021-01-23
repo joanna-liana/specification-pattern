@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
 import { getApp } from './app';
-import { dbConnect } from './db';
+import { dbConnect } from './infra/db';
 
 const bootstrap = () => {
   const port = 3000;
@@ -14,5 +14,9 @@ const bootstrap = () => {
     })
     .catch((err) => console.error('CONNECTION ERR', err));
 };
+
+process.on('unhandledRejection', (error) => {
+  console.log('unhandledRejection', error);
+});
 
 bootstrap();

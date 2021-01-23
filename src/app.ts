@@ -16,6 +16,11 @@ export const getApp = () => {
   const productController = new ProductsController(productService);
 
   app.use(
+    '/api/v1/products/lock',
+    productController.testOptimisticLocking.bind(productController)
+  );
+
+  app.use(
     '/api/v1/products/electronics',
     productController.getElectronicsForSale.bind(productController)
   );

@@ -6,12 +6,12 @@ export class ElectronicsProductsSpecification extends CompositeSpecification<
   Product
 > {
   isSatisfiedBy(candidate: Product): boolean {
-    return candidate.category === 'electronics';
+    return candidate.category.name === 'electronics';
   }
 
   toWhereQuery(alias?: string): WhereQueryData {
     return {
-      query: `${alias || 'product'}."category" <> :category`,
+      query: `${alias || 'product'}."category".name <> :category`,
       params: { category: 'electronics' },
     };
   }

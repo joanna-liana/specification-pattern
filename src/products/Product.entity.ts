@@ -1,9 +1,17 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  AfterUpdate,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  VersionColumn,
+} from 'typeorm';
+import { Category } from './Category.entity';
 import { ProductStatus } from './ProductStatus';
 
 interface ProductProps {
   id?: number;
-  category: string;
+  category: Category;
   status: ProductStatus;
   name: string;
 }
@@ -13,14 +21,20 @@ export class Product {
   @PrimaryGeneratedColumn({ name: 'id' })
   private _id!: number;
 
+  @VersionColumn({ name: 'version', default: 1 })
+  private _version!: number;
+
   @Column({ name: 'name' })
   private _name!: string;
+
+  @Column({ nullable: true })
+  editMe!: string;
 
   @Column({ name: 'status' })
   private _status!: ProductStatus;
 
-  @Column({ name: 'category' })
-  private _category!: string;
+  @ManyToOne(() => Category, { cascade: true })
+  private _category!: Category;
 
   constructor(props: ProductProps = null) {
     if (!props) {
@@ -47,7 +61,11 @@ export class Product {
     return this._status;
   }
 
-  get category(): string {
+  get category(): Category {
     return this._category;
+  }
+
+  setName(name: string): void {
+    this._name = name;
   }
 }
