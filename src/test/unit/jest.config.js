@@ -1,9 +1,10 @@
 module.exports = {
   transform: {
-    '^.+\\.ts?$': 'ts-jest',
+    '^.+\\.ts?$': '@swc/jest',
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.ts?$',
   testEnvironment: 'node',
-  rootDir: 'src',
+  rootDir: '.',
   collectCoverageFrom: ['**/*.ts', '!demo.ts'],
+  testTimeout: 1200000
 };
