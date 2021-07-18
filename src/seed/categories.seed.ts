@@ -1,5 +1,5 @@
 import { Connection } from 'typeorm';
-import { Category } from '../products/Category.entity';
+import { Category } from '../products/category/Category.entity';
 
 export const categories: Category[] = [
   new Category({ name: 'groceries', id: 1 }),

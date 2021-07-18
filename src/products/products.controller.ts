@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import { Product } from './Product.entity';
+import { ActiveProduct } from './product/ActiveProduct.entity';
+import { Collection } from './collection/Collection.entity';
+import { Product } from './product/Product.entity';
 import { ProductsService } from './products.service';
 
 export class ProductsController {
@@ -41,5 +43,19 @@ export class ProductsController {
     await repo.save(product);
 
     res.json(product);
+  }
+
+  async addActiveProduct(req: Request, res: Response): Promise<void> {
+    const repo = getRepository(ActiveProduct);
+
+    // active product can be added to the collection
+    // but it cannot be fetched - only a Product instance is reachable
+    // when querying Collection.products
+    const product = new ActiveProduct();
+    const collection = new Collection();
+
+    collection.products = [product];
+
+    await repo.save(product);
   }
 }

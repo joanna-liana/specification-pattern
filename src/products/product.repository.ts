@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { CompositeSpecification } from '../core/Specification';
-import { Product } from './Product.entity';
+import { Product } from './product/Product.entity';
 
 @EntityRepository(Product)
 export class ProductRepository extends Repository<Product> {

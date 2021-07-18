@@ -1,7 +1,5 @@
 import 'reflect-metadata';
 import { ConnectionOptions, createConnection } from 'typeorm';
-import { Category } from '../products/Category.entity';
-import { Product } from '../products/Product.entity';
 import { OptimisticLockingSubscriber } from './OptimisticLocking.subscriber';
 
 export const connectionOptions: ConnectionOptions = {
@@ -11,7 +9,7 @@ export const connectionOptions: ConnectionOptions = {
   username: 'postgres',
   password: 'postgres',
   database: 'specification_pattern',
-  entities: [Product, Category],
+  entities: ['src/**/*.entity.ts'],
   subscribers: [OptimisticLockingSubscriber],
   synchronize: true,
   logging: ['error'],

@@ -1,7 +1,7 @@
 import { Connection } from 'typeorm';
 
-import { Product } from '../products/Product.entity';
-import { ProductStatus } from '../products/ProductStatus';
+import { Product } from '../products/product/Product.entity';
+import { ProductStatus } from '../products/product/ProductStatus';
 import { categories } from './categories.seed';
 
 const products: Product[] = [

@@ -1,6 +1,6 @@
 import { CompositeSpecification } from '../../core/Specification';
 import { WhereQueryData } from '../../core/WhereQueryData.interface';
-import { Product } from '../Product.entity';
+import { Product } from '../product/Product.entity';
 
 export class ElectronicsProductsSpecification extends CompositeSpecification<
   Product
